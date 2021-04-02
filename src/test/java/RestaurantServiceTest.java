@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.*;
+import org.mockito.Mockito;
 
 import java.time.LocalTime;
 
@@ -15,13 +16,18 @@ class RestaurantServiceTest {
     //>>>>>>>>>>>>>>>>>>>>>>SEARCHING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
     public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException {
-        //WRITE UNIT TEST CASE HERE
+        restaurant = service.addRestaurant("Shahi Darbar", "Mumbai",LocalTime.of(9,0,0),LocalTime.of(23,0,0));
+        assertEquals(restaurant, service.findRestaurantByName("Shahi Darbar"));
+
+
     }
 
     //You may watch the video by Muthukumaran on how to write exceptions in Course 3: Testing and Version control: Optional content
     @Test
     public void searching_for_non_existing_restaurant_should_throw_exception() throws restaurantNotFoundException {
-        //WRITE UNIT TEST CASE HERE
+        assertThrows(restaurantNotFoundException.class, ()->{
+            service.findRestaurantByName("ABC");
+        } );
     }
     //<<<<<<<<<<<<<<<<<<<<SEARCHING>>>>>>>>>>>>>>>>>>>>>>>>>>
 
