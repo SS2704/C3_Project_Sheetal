@@ -70,4 +70,14 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+
+    @Test
+    public void when_1_or_more_item_is_selected_the_Total_orderValue_should_be_displayed(){
+        List<String> itemToOrder = new ArrayList<>();
+        itemToOrder.add("Pizza");
+        itemToOrder.add("Pasta");
+
+        int amount = restaurant.getOrderValue(itemToOrder);
+        assertEquals(750, amount);
+    }
 }
