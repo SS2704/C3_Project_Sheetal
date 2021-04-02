@@ -66,8 +66,17 @@ public class Restaurant {
     }
 
     public int getOrderValue(List<String> selectedItems){
+        int orderValue =0;
+        Item itemOrdered=null;
 
-        return 0;
+        for(String item: selectedItems){
+            itemOrdered = findItemByName(item);
+            orderValue += itemOrdered.getPrice();
+        }
+        return orderValue;
     }
 
+    public void displayOrderValue(List<String> selectedItems){
+        System.out.println("Your order will cost : Rs." + getOrderValue(selectedItems));
+    }
 }
